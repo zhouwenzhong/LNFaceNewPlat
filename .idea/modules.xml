@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/LNFaceNewPlat.iml" filepath="$PROJECT_DIR$/LNFaceNewPlat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/faceToFace/faceToFace.iml" filepath="$PROJECT_DIR$/faceToFace/faceToFace.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mtcLib/mtcLib.iml" filepath="$PROJECT_DIR$/mtcLib/mtcLib.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="transparent">#00000000</color>
+    <!-- 白色 -->
+    <color name="white">#ffffff</color>
+    <!-- 浅黑色 -->
+    <color name="c333">#333333</color>
+    <color name="c666">#666666</color>
+    <color name="c999">#999999</color>
+    <!-- 线条颜色 -->
+    <color name="cline">#c4c4c4</color>
+	<!-- 主色调蓝色 -->
+	<color name="cblue">#3166ff</color>
+	
+	<color name="cgray">#f4f4f4</color>
+</resources>
