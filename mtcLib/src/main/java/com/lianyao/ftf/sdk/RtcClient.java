@@ -334,6 +334,10 @@ public class RtcClient {
 	private static NetworkInfo activeNetwork = null;
 
 	class NetworkChangeReceive extends BroadcastReceiver {
+		public NetworkChangeReceive() {
+			super();
+		}
+
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			ConnectivityManager connectivityManager = (ConnectivityManager)
@@ -342,8 +346,6 @@ public class RtcClient {
 			if(activeNetwork == null) {
 				activeNetwork = networkInfo;
 			}
-
-			Log.i("Active Network Type", networkInfo.getTypeName());
 
 			if (networkInfo != null && networkInfo.isAvailable() && (activeNetwork.getType() != networkInfo.getType())) {
 				activeNetwork = networkInfo;
@@ -374,11 +376,13 @@ public class RtcClient {
 
 				// 网络可用
 				for (RtcConnectionListener listener : conListeners) {
+					MtcLog.e("网络连接上了！");
 					listener.onConnected();
 				}
 			} else if(networkInfo == null || !networkInfo.isAvailable()){
 				// 网络不可用
 				for (RtcConnectionListener listener : conListeners) {
+					MtcLog.e("网络已断开！");
 					listener.onDisconnected(CallState.NETWORK_UNSTABLE.value);
 				}
 			}
