@@ -179,10 +179,11 @@ public class PhoneVideoActivity extends BaseActivity implements
 				isMianti = !isMianti;
 				if(isMianti) {
 					img_mianti.setBackgroundResource(R.drawable.wai_3);
+					ToastUtil.showShort(PhoneVideoActivity.this, "免提已开放！");
 				}else {
 					img_mianti.setBackgroundResource(R.drawable.jingyin_3);
+					ToastUtil.showShort(PhoneVideoActivity.this, "免提已关闭！");
 				}
-				ToastUtil.showShort(PhoneVideoActivity.this, "免提：" + isMianti);
 				rtcCallManager.getVideoCallHelper().speaker(isMianti);
 				break;
 
@@ -250,27 +251,53 @@ public class PhoneVideoActivity extends BaseActivity implements
 	public void onCallStateChanged(final CallState callState, final CallError error) {
 		AppUtil.wakeUpAndUnlock(this);
 		Logger.e(callState + "--" + error);
-		if(callState != null || error != null) {
-			runOnUiThread(new Runnable() {
-				@Override
-				public void run() {
-					String msg = (callState == null) ? error+"" : callState+"";
-					ToastUtil.showShort(PhoneVideoActivity.this, msg);
-				}
-			});
-		}
+//		if(callState != null || error != null) {
+//			runOnUiThread(new Runnable() {
+//				@Override
+//				public void run() {
+//					String msg = (callState == null) ? error+"" : callState+"";
+//					ToastUtil.showShort(PhoneVideoActivity.this, msg);
+//				}
+//			});
+//		}
 		if (callState != null) {
 			switch (callState) {
 				case CONNECTING:
-
+					runOnUiThread(new Runnable() {
+						@Override
+						public void run() {
+							ToastUtil.showShort(PhoneVideoActivity.this, "正在拨号，请稍等。。。");
+						}
+					});
 					break;
 
 				case DISCONNNECTED:
+					runOnUiThread(new Runnable() {
+						@Override
+						public void run() {
+							ToastUtil.showShort(PhoneVideoActivity.this, "通过结束。");
+						}
+					});
 					cutFlag = false;
 					finish();
 					break;
 
+				case CONNECTED:
+					runOnUiThread(new Runnable() {
+						@Override
+						public void run() {
+							ToastUtil.showShort(PhoneVideoActivity.this, "对方已响铃。");
+						}
+					});
+					break;
+
 				case ACCEPTED:
+					runOnUiThread(new Runnable() {
+						@Override
+						public void run() {
+							ToastUtil.showShort(PhoneVideoActivity.this, "对方已接听。");
+						}
+					});
 					switchVideo();
 					handler.postDelayed(updateTime, 1000);
 					break;
@@ -279,16 +306,31 @@ public class PhoneVideoActivity extends BaseActivity implements
 					break;
 			}
 		} else if (error != null) {
+			String msg = "";
 			switch (error) {
 				case REJECTED:
+					msg = "对方已挂断。";
 				case ERROR_NO_DATA:
+					msg = "对方号码不存在。";
 				case ERROR_TRANSPORT:
+					msg = "数据传输错误。";
 				case ERROR_INAVAILABLE:
+					msg = "对方不在线。";
 				case ERROR_BUSY:
+					msg = "对方正在通话中。";
 				case ERROR_NONENTITY:
+					msg = "对方号码不存在。";
 				case ERROR_NORESPONSE:
+					msg = "对方未接通。";
 				case ERROR_LOCAL_VERSION_SMALLER:
 				case ERROR_PEER_VERSION_SMALLER:
+					final String message = msg;
+					runOnUiThread(new Runnable() {
+						@Override
+						public void run() {
+							ToastUtil.showShort(PhoneVideoActivity.this, message);
+						}
+					});
 					finish();
 					break;
 
