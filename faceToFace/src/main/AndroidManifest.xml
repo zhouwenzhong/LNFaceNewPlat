@@ -130,6 +130,7 @@
         <activity android:name="com.lianyao.ftf.view.ContactModifyActivity" />
         <activity android:name="com.lianyao.ftf.view.LoginActivity" />
         <activity android:name="com.lianyao.ftf.view.RegistActivity" />
+        <activity android:name="com.lianyao.ftf.view.RegistFirstActivity" />
         <activity android:name="com.lianyao.ftf.view.SettingsActivity" />
         <activity android:name="com.lianyao.ftf.view.PhoneVideoActivity" />
         <activity android:name="com.lianyao.ftf.view.PhoneAnswerVideoActivity" />

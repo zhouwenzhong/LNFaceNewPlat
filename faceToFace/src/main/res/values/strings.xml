@@ -14,9 +14,10 @@
     <string name="hint_user_password_ok">请再次输入密码</string>
     <string name="user_registe">注册</string>
     <string name="next_phone">下一步，验证手机号</string>
+    <string name="next_register">下一步</string>
     <string name="verify_phone">验证消息将发送至%s</string>
     <string name="verify_code">验证码</string>
-    <string name="send_verify_code">发送验证码</string>
+    <string name="send_verify_code">获取验证码</string>
     <string name="input_verify_code">输入短信验证码</string>
     <string name="next_password">下一步，设置新密码</string>
     <string name="finish">完成</string>

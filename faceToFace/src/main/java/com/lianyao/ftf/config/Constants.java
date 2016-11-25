@@ -13,7 +13,8 @@ public class Constants {
 //	public static final String TICKET = "980F1682A3FCAE2A77F05456810EDEAF";
 
 
-	public static final String BASE_URL = "http://call.muxeyes.com:8080/ftf-inter/";
+//	public static final String BASE_URL = "http://call.muxeyes.com:8080/ftf-inter/";
+	public static final String BASE_URL = "http://10.10.10.30:8080/ftf-inter/";
 
 	public static final String APPID = "IHUqEa9MkS";
 	public static final String TICKET = "B815C6DEF4D288CC80281B7E79FC39CD";

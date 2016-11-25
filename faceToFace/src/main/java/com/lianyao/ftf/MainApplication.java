@@ -2,6 +2,7 @@ package com.lianyao.ftf;
 
 import android.app.Application;
 import android.content.IntentFilter;
+import android.util.Log;
 
 import com.lianyao.ftf.config.Constants;
 import com.lianyao.ftf.receiver.RtcReceiver;
@@ -61,12 +62,14 @@ public class MainApplication extends Application {
 
 			@Override
 			public void onDisconnected(int error) {
-
+				Log.e("MainApplication","网络断开。");
 			}
 
 			@Override
 			public void onConnected() {
+				Log.e("MainApplication","网络连接上。");
 			}
+
 		});
 	}
 }

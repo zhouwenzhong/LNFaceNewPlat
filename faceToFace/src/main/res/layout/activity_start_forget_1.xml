@@ -63,8 +63,9 @@
             android:gravity="center_vertical"
             android:singleLine="true"
             android:textColor="@color/c333"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:inputType="phone"
+            android:maxLength="11"
             android:hint="@string/hint_user_name" />
     </LinearLayout>
 

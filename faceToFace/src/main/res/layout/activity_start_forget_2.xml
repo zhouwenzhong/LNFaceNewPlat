@@ -83,6 +83,7 @@
                 android:layout_toLeftOf="@id/tv_getcheck"
                 android:background="@null"
                 android:inputType="number"
+                android:maxLength="6"
                 android:hint="@string/input_verify_code"
                 android:textColor="@color/c333"
                 android:textSize="14sp" />

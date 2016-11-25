@@ -79,7 +79,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener,
 			break;
 
 		case R.id.txt_registe:
-			Intent intent = new Intent(LoginActivity.this, RegistActivity.class);
+			Intent intent = new Intent(LoginActivity.this, RegistFirstActivity.class);
 			startActivity(intent);
 			break;
 

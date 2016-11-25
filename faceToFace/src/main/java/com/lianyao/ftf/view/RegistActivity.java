@@ -7,6 +7,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.alibaba.fastjson.JSONObject;
 import com.lianyao.ftf.R;
@@ -23,10 +24,11 @@ public class RegistActivity extends BaseActivity implements OnClickListener,
 
 	private ImageView img_return;
 	private EditText edit_nickname;
-	private EditText edit_username;
+	private TextView tv_username;
 	private EditText edit_password;
 	private EditText edit_password_ok;
 	private Button btn_registe;
+	String mobile;
 
 	@Override
 	protected int layoutId() {
@@ -37,10 +39,12 @@ public class RegistActivity extends BaseActivity implements OnClickListener,
 	protected void setViews() {
 		img_return = (ImageView) findViewById(R.id.img_return);
 		edit_nickname = (EditText) findViewById(R.id.edit_nickname);
-		edit_username = (EditText) findViewById(R.id.edit_username);
+		tv_username = (TextView) findViewById(R.id.tv_username);
 		edit_password = (EditText) findViewById(R.id.edit_password);
 		edit_password_ok = (EditText) findViewById(R.id.edit_password_ok);
 		btn_registe = (Button) findViewById(R.id.btn_registe);
+		mobile = getIntent().getStringExtra("mobile");
+		tv_username.setText(mobile);
 		img_return.setOnClickListener(this);
 		btn_registe.setOnClickListener(this);
 	}
@@ -54,17 +58,16 @@ public class RegistActivity extends BaseActivity implements OnClickListener,
 
 		case R.id.btn_registe:
 			String nickname = edit_nickname.getText().toString();
-			String username = edit_username.getText().toString();
 			String password = edit_password.getText().toString();
 			String password_ok = edit_password_ok.getText().toString();
-			if (CommonUtil.isEmpty(nickname) || CommonUtil.isEmpty(username)
+			if (CommonUtil.isEmpty(nickname)
 					|| CommonUtil.isEmpty(password)
 					|| CommonUtil.isEmpty(password_ok)) {
 				ToastUtil.showShort(this, "请输入完整内容");
 			} else if (!password.equals(password_ok)) {
 				ToastUtil.showShort(this, "两次密码不一致");
 			} else {
-				RtcClient.getInstance().register(username, this);
+				RtcClient.getInstance().register(mobile, this);
 			}
 			break;
 
@@ -95,7 +98,7 @@ public class RegistActivity extends BaseActivity implements OnClickListener,
 			
 			JSONObject param = new JSONObject();
 			param.put("imei", AppUtil.getDeviceIMEI(this));
-			param.put("mobile", edit_username.getText().toString());
+			param.put("mobile", mobile);
 			param.put("nickname", edit_nickname.getText().toString());
 			param.put("password", edit_password.getText().toString());
 			param.put("type", "1");

@@ -12,6 +12,10 @@ public class Contact {
 	
 	private String tid;
 
+	private String imgTag;
+
+	private String createDate;
+
 	public Long getId() {
 		return id;
 	}
@@ -50,6 +54,22 @@ public class Contact {
 
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
+	}
+
+	public String getImgTag() {
+		return imgTag;
+	}
+
+	public void setImgTag(String imgTag) {
+		this.imgTag = imgTag;
+	}
+
+	public String getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(String createDate) {
+		this.createDate = createDate;
 	}
 	
 }

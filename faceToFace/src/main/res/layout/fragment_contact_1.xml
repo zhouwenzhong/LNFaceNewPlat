@@ -40,7 +40,7 @@
             android:paddingBottom="2.5dp"
             android:paddingLeft="50dp"
             android:paddingTop="2.5dp"
-            android:visibility="gone"
+            android:visibility="visible"
             android:src="@drawable/icon_add" />
 
     </RelativeLayout>

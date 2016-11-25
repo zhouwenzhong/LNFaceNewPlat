@@ -1,5 +1,7 @@
 package com.lianyao.ftf.sdk.webrtc;
 
+import android.text.TextUtils;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -164,8 +166,12 @@ public class WebrtcClient {
 							return;
 						}
 					}else {
-						String cameraDeviceName = CameraEnumerationAndroid
-								.getDeviceName(0);
+						String cameraDeviceName = CameraEnumerationAndroid.getNameOfFrontFacingDevice();
+
+						if(TextUtils.isEmpty(cameraDeviceName)) {
+							cameraDeviceName = CameraEnumerationAndroid
+									.getDeviceName(0);
+						}
 						/**
 						 * 5. 获取摄像头实例
 						 */
