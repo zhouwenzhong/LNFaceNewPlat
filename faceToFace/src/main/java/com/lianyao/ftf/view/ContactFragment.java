@@ -12,6 +12,7 @@ import android.view.View.OnFocusChangeListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.alibaba.fastjson.JSONArray;
@@ -19,8 +20,11 @@ import com.alibaba.fastjson.JSONObject;
 import com.lianyao.ftf.R;
 import com.lianyao.ftf.adapter.ContactAdapter;
 import com.lianyao.ftf.base.BaseFragment;
+import com.lianyao.ftf.config.Constants;
 import com.lianyao.ftf.entry.Contact;
 import com.lianyao.ftf.util.SPUtil;
+import com.lidroid.xutils.DbUtils;
+import com.lidroid.xutils.exception.DbException;
 
 public class ContactFragment extends BaseFragment implements OnClickListener {
 
@@ -30,6 +34,8 @@ public class ContactFragment extends BaseFragment implements OnClickListener {
 	private List<Contact> list = new ArrayList<Contact>();
 	private List<Contact> list2 = new ArrayList<Contact>();
 	private ContactAdapter adapter;
+	private ImageView img_add;
+	private DbUtils db;
 	
 	@Override
 	protected int layoutId() {
@@ -38,8 +44,10 @@ public class ContactFragment extends BaseFragment implements OnClickListener {
 
 	@Override
 	protected void setViews(View rootView) {
+		db = DbUtils.create(getActivity(), Constants.CONTACT_DB, 1, null);
 		view = rootView;
 		edit_search = (EditText) rootView.findViewById(R.id.edit_search);
+		img_add = (ImageView) rootView.findViewById(R.id.img_add);
 		listview_contact = (ListView) rootView.findViewById(R.id.listview_contact);
 		
 		listview_contact.setOnItemClickListener(new OnItemClickListener() {
@@ -53,13 +61,24 @@ public class ContactFragment extends BaseFragment implements OnClickListener {
 				startActivity(intent);
 			}
 		});
-		
-		adapter = new ContactAdapter(view.getContext(), list2);
-		listview_contact.setAdapter(adapter);
-		
-		JSONObject params = new JSONObject();
+		try {
+			list = db.findAll(Contact.class);
+			list2 = db.findAll(Contact.class);
+			if(list2 == null) {
+				list2 = new ArrayList<>();
+			}
+			if(list == null) {
+				list = new ArrayList<>();
+			}
+			adapter = new ContactAdapter(view.getContext(), list2);
+			listview_contact.setAdapter(adapter);
+		}catch (DbException ex) {
+
+		}
+		/*JSONObject params = new JSONObject();
 		params.put("id", SPUtil.get(rootView.getContext(), "id", "-1"));
 		getRequest().setRestPost(this, "contact.json", params);
+		*/
 		
 		edit_search.setOnFocusChangeListener(new OnFocusChangeListener() {
 
@@ -104,6 +123,14 @@ public class ContactFragment extends BaseFragment implements OnClickListener {
 
 			}
 		});
+
+		img_add.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Intent intent = new Intent(getActivity(), ContactAddActivity.class);
+				startActivityForResult(intent, 0);
+			}
+		});
 	}
 
 	@Override
@@ -111,6 +138,31 @@ public class ContactFragment extends BaseFragment implements OnClickListener {
 		switch(v.getId()) {
 		default:
 			break;
+		}
+	}
+
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		switch (resultCode) {
+			case 0:
+				break;
+			case 1:
+				//添加后，刷新
+				try {
+					list = db.findAll(Contact.class);
+					list2 = db.findAll(Contact.class);
+					if (list2 == null) {
+						list2 = new ArrayList<>();
+					}
+					if (list == null) {
+						list = new ArrayList<>();
+					}
+					adapter = new ContactAdapter(view.getContext(), list2);
+					listview_contact.setAdapter(adapter);
+				}catch (DbException ex) {
+
+				}
+				break;
 		}
 	}
 
