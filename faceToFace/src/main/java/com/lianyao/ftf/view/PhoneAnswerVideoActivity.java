@@ -321,19 +321,19 @@ public class PhoneAnswerVideoActivity extends BaseActivity implements
             String msg = "";
             switch (error) {
                 case REJECTED:
-                    msg = "对方已挂断。";
+                    msg = "对方已挂断";
                 case ERROR_NO_DATA:
-                    msg = "对方号码不存在。";
+                    msg = "对方号码不存在";
                 case ERROR_TRANSPORT:
-                    msg = "数据传输错误。";
+                    msg = "数据传输错误";
                 case ERROR_INAVAILABLE:
-                    msg = "对方不在线。";
+                    msg = "对方不在线";
                 case ERROR_BUSY:
-                    msg = "对方正在通话中。";
+                    msg = "对方正在通话中";
                 case ERROR_NONENTITY:
-                    msg = "对方号码不存在。";
+                    msg = "对方号码不存在";
                 case ERROR_NORESPONSE:
-                    msg = "对方未接通。";
+                    msg = "对方未接通";
                 case ERROR_LOCAL_VERSION_SMALLER:
                 case ERROR_PEER_VERSION_SMALLER:
                     final String message = msg;

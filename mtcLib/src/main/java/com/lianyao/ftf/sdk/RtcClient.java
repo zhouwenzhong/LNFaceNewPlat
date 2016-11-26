@@ -376,13 +376,13 @@ public class RtcClient {
 
 				// 网络可用
 				for (RtcConnectionListener listener : conListeners) {
-					MtcLog.e("网络连接上了！");
+					MtcLog.e("网络连接上了");
 					listener.onConnected();
 				}
 			} else if(networkInfo == null || !networkInfo.isAvailable()){
 				// 网络不可用
 				for (RtcConnectionListener listener : conListeners) {
-					MtcLog.e("网络已断开！");
+					MtcLog.e("网络已断开");
 					listener.onDisconnected(CallState.NETWORK_UNSTABLE.value);
 				}
 			}
