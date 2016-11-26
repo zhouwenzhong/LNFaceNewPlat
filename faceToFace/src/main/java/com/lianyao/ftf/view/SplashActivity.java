@@ -74,7 +74,7 @@ public class SplashActivity extends BaseActivity implements Animation.AnimationL
 						Environment.MEDIA_MOUNTED)) {
 					downFile(info.getTargetUrl());     //在下面的代码段
 				} else {
-					Toast.makeText(SplashActivity.this, "升级失败！",
+					Toast.makeText(SplashActivity.this, "升级失败",
 							Toast.LENGTH_SHORT).show();
 					startApp();
 				}
@@ -153,7 +153,7 @@ public class SplashActivity extends BaseActivity implements Animation.AnimationL
 						while ((ch = is.read(buf)) != -1) {
 							fileOutputStream.write(buf, 0, ch);
 							process += ch;
-							pBar.setProgress(process);       //这里就是关键的实时更新进度了！
+							pBar.setProgress(process);       //这里就是关键的实时更新进度了
 						}
 
 					}

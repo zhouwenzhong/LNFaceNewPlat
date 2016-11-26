@@ -26,7 +26,7 @@ public class MainApplication extends Application {
 		registerReceiver(mReceiver, intentFilter);
 
 		if(!AppUtil.isNetWorkAvailable(MainApplication.this.getApplicationContext())) {
-			ToastUtil.showShort(this.getApplicationContext(), "请检查网络连接！");
+			ToastUtil.showShort(this.getApplicationContext(), "请检查网络连接");
 			return;
 		}
 

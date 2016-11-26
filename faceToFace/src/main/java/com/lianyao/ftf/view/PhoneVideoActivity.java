@@ -179,10 +179,10 @@ public class PhoneVideoActivity extends BaseActivity implements
 				isMianti = !isMianti;
 				if(isMianti) {
 					img_mianti.setBackgroundResource(R.drawable.wai_3);
-					ToastUtil.showShort(PhoneVideoActivity.this, "免提已开放！");
+					ToastUtil.showShort(PhoneVideoActivity.this, "免提已开放");
 				}else {
 					img_mianti.setBackgroundResource(R.drawable.jingyin_3);
-					ToastUtil.showShort(PhoneVideoActivity.this, "免提已关闭！");
+					ToastUtil.showShort(PhoneVideoActivity.this, "免提已关闭");
 				}
 				rtcCallManager.getVideoCallHelper().speaker(isMianti);
 				break;
@@ -196,10 +196,10 @@ public class PhoneVideoActivity extends BaseActivity implements
 				isVideo = !isVideo;
 				if(isVideo) {
 					findViewById(R.id.img_video).setBackgroundResource(R.drawable.camera);
-					ToastUtil.showShort(PhoneVideoActivity.this, "视频已开启！");
+					ToastUtil.showShort(PhoneVideoActivity.this, "视频已开启");
 				}else {
 					findViewById(R.id.img_video).setBackgroundResource(R.drawable.camera_no);
-					ToastUtil.showShort(PhoneVideoActivity.this, "视频已关闭！");
+					ToastUtil.showShort(PhoneVideoActivity.this, "视频已关闭");
 				}
 				break;
 			case R.id.img_audio:
@@ -211,10 +211,10 @@ public class PhoneVideoActivity extends BaseActivity implements
 				isAudio = !isAudio;
 				if(isAudio) {
 					findViewById(R.id.img_audio).setBackgroundResource(R.drawable.mai_6);
-					ToastUtil.showShort(PhoneVideoActivity.this, "声音已开启！");
+					ToastUtil.showShort(PhoneVideoActivity.this, "声音已开启");
 				}else {
 					findViewById(R.id.img_audio).setBackgroundResource(R.drawable.mai_3);
-					ToastUtil.showShort(PhoneVideoActivity.this, "声音已关闭！");
+					ToastUtil.showShort(PhoneVideoActivity.this, "声音已关闭");
 				}
 				break;
 			case R.id.img_turn:
@@ -275,7 +275,7 @@ public class PhoneVideoActivity extends BaseActivity implements
 					runOnUiThread(new Runnable() {
 						@Override
 						public void run() {
-							ToastUtil.showShort(PhoneVideoActivity.this, "通过结束。");
+							ToastUtil.showShort(PhoneVideoActivity.this, "通话结束");
 						}
 					});
 					cutFlag = false;
@@ -286,7 +286,7 @@ public class PhoneVideoActivity extends BaseActivity implements
 					runOnUiThread(new Runnable() {
 						@Override
 						public void run() {
-							ToastUtil.showShort(PhoneVideoActivity.this, "对方已响铃。");
+							ToastUtil.showShort(PhoneVideoActivity.this, "对方已响铃");
 						}
 					});
 					break;
@@ -295,7 +295,7 @@ public class PhoneVideoActivity extends BaseActivity implements
 					runOnUiThread(new Runnable() {
 						@Override
 						public void run() {
-							ToastUtil.showShort(PhoneVideoActivity.this, "对方已接听。");
+							ToastUtil.showShort(PhoneVideoActivity.this, "对方已接听");
 						}
 					});
 					switchVideo();

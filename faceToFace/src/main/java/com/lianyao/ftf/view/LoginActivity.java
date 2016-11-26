@@ -61,7 +61,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener,
 
 		case R.id.btn_login:
 			if(!AppUtil.isNetWorkAvailable(LoginActivity.this)) {
-				ToastUtil.showShort(this.getApplicationContext(), "请检查网络连接！");
+				ToastUtil.showShort(this.getApplicationContext(), "请检查网络连接");
 				return;
 			}
 			btn_login.setClickable(false);
