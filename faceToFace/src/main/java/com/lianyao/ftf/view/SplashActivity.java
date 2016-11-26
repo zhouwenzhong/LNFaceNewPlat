@@ -384,7 +384,7 @@ public class SplashActivity extends BaseActivity implements Animation.AnimationL
 				Intent intent = new Intent(SplashActivity.this,
 						ContactActivity.class);
 				startActivity(intent);
-				ToastUtil.showShort(SplashActivity.this, "onSussess");
+//				ToastUtil.showShort(SplashActivity.this, "onSussess");
 				finish();
 			}
 
@@ -405,8 +405,8 @@ public class SplashActivity extends BaseActivity implements Animation.AnimationL
 			@Override
 			public void run() {
 				// TODO 保存新获取到的token
-				ToastUtil.showShort(SplashActivity.this, "onUpdateToken>>"
-						+ tInfo);
+//				ToastUtil.showShort(SplashActivity.this, "onUpdateToken>>"
+//						+ tInfo);
 				SPUtil.put(SplashActivity.this, "token", tInfo);
 			}
 		});

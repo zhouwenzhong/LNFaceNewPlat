@@ -1,8 +1,9 @@
 package com.lianyao.ftf.entry;
 
 public class Contact {
-
 	private Long id;
+
+	private Long userid;
 	
 	private String mobile; //手机号
 	
@@ -22,6 +23,14 @@ public class Contact {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Long getUserId() {
+		return userid;
+	}
+
+	public void setUserId(Long userid) {
+		this.userid = userid;
 	}
 
 	public String getUid() {

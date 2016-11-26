@@ -116,7 +116,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener,
 				Intent intent = new Intent(LoginActivity.this,
 						ContactActivity.class);
 				startActivity(intent);
-				ToastUtil.showShort(LoginActivity.this, "onSussess");
+//				ToastUtil.showShort(LoginActivity.this, "onSussess");
 				finish();
 			}
 
@@ -144,8 +144,8 @@ public class LoginActivity extends BaseActivity implements OnClickListener,
 			@Override
 			public void run() {
 				// TODO 保存新获取到的token
-				ToastUtil.showShort(LoginActivity.this, "onUpdateToken>>"
-						+ tInfo);
+//				ToastUtil.showShort(LoginActivity.this, "onUpdateToken>>"
+//						+ tInfo);
 				SPUtil.put(LoginActivity.this, "token", tInfo);
 			}
 		});

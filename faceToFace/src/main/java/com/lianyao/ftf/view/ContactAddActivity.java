@@ -65,8 +65,8 @@ public class ContactAddActivity extends BaseActivity implements View.OnClickList
                 if (CommonUtil.isEmpty(username)) {
                     ToastUtil.showShort(this, "请输入联系人姓名");
                     return;
-                } else if (!ValidateUtil.isMobileNO(mobile)) {
-                    ToastUtil.showShort(this, "手机号格式不正确");
+                } else if (!ValidateUtil.isMobileNO(mobile) && !ValidateUtil.isBoxNO(mobile)) {
+                    ToastUtil.showShort(this, "手机号或盒子号码格式不正确");
                     return;
                 }
 
@@ -91,11 +91,12 @@ public class ContactAddActivity extends BaseActivity implements View.OnClickList
                 if (contact != null) {
                     contact.setCreateDate(new SimpleDateFormat("yyyyMMddHHmmss")
                             .format(new Date()));
-                    db.deleteById(Contact.class, contact.getId());
+                    db.deleteById(Contact.class, contact.getUserId());
                 }
                 contact = new Contact();
                 contact.setCreateDate(new SimpleDateFormat("yyyyMMddHHmmss")
                         .format(new Date()));
+                contact.setUserId(userJson.getLong("id"));
                 contact.setMobile(userJson.getString("name"));
 //                contact.setNickname(userJson.getString("nickname"));
                 contact.setNickname(edt_username.getText().toString());

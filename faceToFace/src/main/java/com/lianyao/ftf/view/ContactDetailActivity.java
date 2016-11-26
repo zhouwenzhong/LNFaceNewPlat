@@ -54,7 +54,7 @@ public class ContactDetailActivity extends BaseActivity implements
 			break;
 
 		case R.id.img_audio:
-			if ((friend.getId() + "").equals(SPUtil.get(this, "id", "-1"))) {
+			if ((friend.getUserId() + "").equals(SPUtil.get(this, "id", "-1"))) {
 				ToastUtil.showShort(this, "不能和自己通信");
 			} else {
 //				Intent intent = new Intent(ContactDetailActivity.this,
@@ -73,7 +73,7 @@ public class ContactDetailActivity extends BaseActivity implements
 			break;
 
 		case R.id.img_video:
-			if ((friend.getId() + "").equals(SPUtil.get(this, "id", "-1"))) {
+			if ((friend.getUserId() + "").equals(SPUtil.get(this, "id", "-1"))) {
 				ToastUtil.showShort(this, "不能和自己通信");
 			} else {
 				Intent intent = new Intent(ContactDetailActivity.this,
@@ -95,7 +95,7 @@ public class ContactDetailActivity extends BaseActivity implements
 	public void onSuccess(JSONObject json) {
 		super.onSuccess(json);
 		JSONObject friendObj = json.getJSONObject("obj");
-		friend.setId(friendObj.getLong("id"));
+		friend.setUserId(friendObj.getLong("id"));
 		friend.setMobile(friendObj.getString("name"));
 		friend.setNickname(friendObj.getString("nickname"));
 		friend.setTid(friendObj.getString("tid"));

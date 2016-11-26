@@ -55,7 +55,7 @@ public class ContactFragment extends BaseFragment implements OnClickListener {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
 				Contact contact = list2.get(position);
 				Intent intent = new Intent(view.getContext(), ContactDetailActivity.class);
-				intent.putExtra("id", contact.getId() + "");
+				intent.putExtra("id", contact.getUserId() + "");
 				intent.putExtra("nickname", contact.getNickname());
 				intent.putExtra("mobile", contact.getMobile());
 				startActivity(intent);
@@ -173,7 +173,7 @@ public class ContactFragment extends BaseFragment implements OnClickListener {
 		JSONArray jsonUser = json.getJSONArray("obj");
 		for(int i = 0, count = jsonUser.size(); i < count; i++) {
 			Contact contact = new Contact();
-			contact.setId(jsonUser.getJSONObject(i).getLong("id"));
+			contact.setUserId(jsonUser.getJSONObject(i).getLong("id"));
 			contact.setMobile(jsonUser.getJSONObject(i).getString("name"));
 			contact.setNickname(jsonUser.getJSONObject(i).getString("nickname"));
 			contact.setTid(jsonUser.getJSONObject(i).getString("tid"));

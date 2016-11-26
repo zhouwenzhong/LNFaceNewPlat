@@ -22,6 +22,13 @@ public class ValidateUtil {
 		return matcher.matches();
 	}
 
+	// 判断盒子号码是否正确
+	public static boolean isBoxNO(final String boxnum) {
+		final Pattern pattern = Pattern.compile("^(1)\\d{7}$");
+		final Matcher matcher = pattern.matcher(boxnum);
+		return matcher.matches();
+	}
+
 	/**
 	 * 判断身份证号格式，只判断二代身份证（必须18位，前17位必须数字，最后一位为数字或X，7到14位为出生日期必须符合日期规则）
 	 * 
