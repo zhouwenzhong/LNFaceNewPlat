@@ -266,7 +266,7 @@ public class PhoneVideoActivity extends BaseActivity implements
 					runOnUiThread(new Runnable() {
 						@Override
 						public void run() {
-							ToastUtil.showShort(PhoneVideoActivity.this, "正在拨号，请稍等。。。");
+							ToastUtil.showShort(PhoneVideoActivity.this, "正在拨号，请稍等");
 						}
 					});
 					break;
