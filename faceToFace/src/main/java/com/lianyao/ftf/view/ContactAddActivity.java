@@ -102,6 +102,7 @@ public class ContactAddActivity extends BaseActivity implements View.OnClickList
                 contact.setNickname(edt_username.getText().toString());
                 contact.setTid(userJson.getString("tid"));
                 contact.setUid(userJson.getString("uid"));
+                contact.setHeadUrl(userJson.getString("headUrl"));
                 db.save(contact);
             }catch (DbException ex) {
                 ToastUtil.showShort(ContactAddActivity.this, "联系人添加失败");

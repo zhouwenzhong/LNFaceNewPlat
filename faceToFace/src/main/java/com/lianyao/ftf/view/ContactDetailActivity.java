@@ -100,6 +100,7 @@ public class ContactDetailActivity extends BaseActivity implements
 		friend.setNickname(friendObj.getString("nickname"));
 		friend.setTid(friendObj.getString("tid"));
 		friend.setUid(friendObj.getString("uid"));
+		friend.setHeadUrl(friendObj.getString("headUrl"));
 	}
 
 }

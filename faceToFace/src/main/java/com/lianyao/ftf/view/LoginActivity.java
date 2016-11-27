@@ -98,9 +98,11 @@ public class LoginActivity extends BaseActivity implements OnClickListener,
 			JSONObject obj = json.getJSONObject("obj");
 			String mobile = obj.getString("uid").split("_")[1];
 			String token = obj.getString("token");
+			String headUrl = obj.getString("headUrl");
 			SPUtil.put(this, "id", obj.getString("id"));
 			SPUtil.put(this, "mobile", mobile);
 			SPUtil.put(this, "token", token);
+			SPUtil.put(this, "headUrl", headUrl);
 			RtcClient.getInstance().login(mobile, token, this);
 		}
 	}

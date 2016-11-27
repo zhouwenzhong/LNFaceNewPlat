@@ -178,6 +178,7 @@ public class ContactFragment extends BaseFragment implements OnClickListener {
 			contact.setNickname(jsonUser.getJSONObject(i).getString("nickname"));
 			contact.setTid(jsonUser.getJSONObject(i).getString("tid"));
 			contact.setUid(jsonUser.getJSONObject(i).getString("uid"));
+			contact.setHeadUrl(jsonUser.getJSONObject(i).getString("headUrl"));
 			list.add(contact);
 			list2.add(contact);
 		}

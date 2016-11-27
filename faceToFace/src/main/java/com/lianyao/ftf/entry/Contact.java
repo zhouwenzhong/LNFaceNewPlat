@@ -3,7 +3,7 @@ package com.lianyao.ftf.entry;
 public class Contact {
 	private Long id;
 
-	private Long userid;
+	private Long userId;
 	
 	private String mobile; //手机号
 	
@@ -17,6 +17,8 @@ public class Contact {
 
 	private String createDate;
 
+	private String headUrl;
+
 	public Long getId() {
 		return id;
 	}
@@ -26,11 +28,11 @@ public class Contact {
 	}
 
 	public Long getUserId() {
-		return userid;
+		return userId;
 	}
 
 	public void setUserId(Long userid) {
-		this.userid = userid;
+		this.userId = userid;
 	}
 
 	public String getUid() {
@@ -80,5 +82,12 @@ public class Contact {
 	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
-	
+
+	public String getHeadUrl() {
+		return headUrl;
+	}
+
+	public void setHeadUrl(String headUrl) {
+		this.headUrl = headUrl;
+	}
 }

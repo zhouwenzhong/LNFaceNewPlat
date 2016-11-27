@@ -95,6 +95,8 @@ public class MyFragment extends BaseFragment implements OnClickListener {
 		JSONObject obj = json.getJSONObject("obj");
 		tv_nickname.setText(obj.getString("nickname"));
 		tv_phone.setText(obj.getString("name"));
+		String url = obj.getString("headUrl");
+		MainApplication.imageLoader.displayImage(url, iv_head, MainApplication.options);
 	}
 
 	@Override
