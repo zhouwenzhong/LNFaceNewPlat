@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lianyao.ftf"
     android:installLocation="internalOnly"
-    android:versionCode="6"
-    android:versionName="1.02" >
+    android:versionCode="1"
+    android:versionName="1.03" >
 
     <uses-sdk
         android:minSdkVersion="17"

@@ -1,6 +1,7 @@
 package com.lianyao.ftf.view;
 
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -102,7 +103,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener,
 			SPUtil.put(this, "id", obj.getString("id"));
 			SPUtil.put(this, "mobile", mobile);
 			SPUtil.put(this, "token", token);
-			SPUtil.put(this, "headUrl", headUrl);
+			if(!TextUtils.isEmpty(headUrl)) SPUtil.put(this, "headUrl", headUrl);
 			RtcClient.getInstance().login(mobile, token, this);
 		}
 	}

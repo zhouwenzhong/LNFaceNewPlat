@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
@@ -360,7 +361,7 @@ public class SplashActivity extends BaseActivity implements Animation.AnimationL
 			SPUtil.put(this, "id", obj.getString("id"));
 			SPUtil.put(this, "mobile", mobile);
 			SPUtil.put(this, "token", token);
-			SPUtil.put(this, "headUrl", headUrl);
+			if(!TextUtils.isEmpty(headUrl)) SPUtil.put(this, "headUrl", headUrl);
 			RtcClient.getInstance().login(mobile, token, this);
 		}
 	}
