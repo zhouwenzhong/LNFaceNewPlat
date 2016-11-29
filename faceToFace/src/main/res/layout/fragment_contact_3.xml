@@ -122,7 +122,39 @@
 	        />
 	    
 	</LinearLayout>
-    
+
+
+	<View
+		style="@style/view_line_margin"
+		/>
+	<LinearLayout
+		android:id="@+id/ll_newversion"
+		android:layout_width="match_parent"
+		android:layout_height="42dp"
+		android:orientation="horizontal"
+		android:background="@color/white"
+		>
+		<TextView
+			android:layout_width="92dp"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_vertical"
+			android:text="@string/newversion"
+			android:layout_marginLeft="10dp"
+			android:textColor="@color/c666"
+			android:textSize="15sp"
+			/>
+		<TextView
+			android:id="@+id/tv_newversion"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_vertical"
+			android:layout_marginLeft="10dp"
+			android:textColor="@color/c333"
+			android:textSize="15sp"
+			/>
+
+	</LinearLayout>
+
     <View 
         style="@style/view_line_info"
         android:layout_marginBottom="12dp"

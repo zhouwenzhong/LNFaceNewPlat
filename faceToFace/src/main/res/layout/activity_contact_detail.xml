@@ -32,6 +32,18 @@
             android:text="@string/contact_detail"
             android:textColor="@color/c333"
             android:textSize="18sp" />
+
+        <TextView
+            style="@style/ww"
+            android:id="@+id/tv_delete"
+            android:layout_alignParentRight="true"
+            android:paddingBottom="2.5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="2.5dp"
+            android:text="@string/delete"
+            android:textColor="@color/cblue"
+            android:textSize="14sp" />
     </RelativeLayout>
 
     <ImageView 

@@ -58,7 +58,7 @@ public class ContactFragment extends BaseFragment implements OnClickListener {
 				intent.putExtra("id", contact.getUserId() + "");
 				intent.putExtra("nickname", contact.getNickname());
 				intent.putExtra("mobile", contact.getMobile());
-				startActivity(intent);
+				startActivityForResult(intent, 1);
 			}
 		});
 		try {

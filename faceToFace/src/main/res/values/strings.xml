@@ -78,5 +78,7 @@
     <string name="later_update_tip">更新中&#8230;</string>
     <string name="update">更新</string>
     <string name="ignore">忽略</string>
+    <string name="delete">删除</string>
+    <string name="newversion">新版本检测</string>
 
 </resources>
