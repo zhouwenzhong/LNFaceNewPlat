@@ -239,13 +239,13 @@
             android:textSize="19sp" />
 
         <TextView
-        android:id="@+id/tv_phone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:gravity="center"
-        android:textColor="@color/c333"
-        android:textSize="16sp" />
+            android:id="@+id/tv_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:textColor="@color/c333"
+            android:textSize="16sp" />
         <TextView
             android:id="@+id/tv_time"
             android:layout_width="wrap_content"
@@ -254,5 +254,124 @@
             android:gravity="center"
             android:textColor="@color/c333"
             android:text="00:00:00"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_stats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|top"
+        android:gravity="left|top"
+        android:orientation="vertical"
+        android:layout_above="@id/ll_temp"
+        android:layout_below="@+id/ll_answer"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/tv_fpssent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:gravity="left"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_fpsrecv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:gravity="left"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_bandwidthsent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:gravity="left"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_bandwidthrecv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:gravity="left"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_sendframewidth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:gravity="left"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_sendframeheight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:gravity="left"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_recvframewidth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:gravity="left"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_recvframeheight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:gravity="left"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_packetslostsent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:gravity="left"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_packetslostrecv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:gravity="left"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_packetssent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:gravity="left"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_packetsrecv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:gravity="left"
+            android:textColor="@color/white" />
     </LinearLayout>
 </RelativeLayout>

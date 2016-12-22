@@ -35,7 +35,8 @@ public final class CallHelper {
 	// 呼叫声音文件名Uri
 	public static Uri callRingfileUri;
 
-	public static String videoCodec = MtcCodec.VIDEO_CODEC_VP8;
+//	public static String videoCodec = MtcCodec.VIDEO_CODEC_VP8;
+	public static String videoCodec = MtcCodec.VIDEO_CODEC_H264;
 
 	public static String audioCodec = MtcCodec.AUDIO_CODEC_OPUS;
 

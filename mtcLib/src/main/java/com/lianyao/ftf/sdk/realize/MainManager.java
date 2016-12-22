@@ -24,6 +24,7 @@ package com.lianyao.ftf.sdk.realize;
  * 
  */
 import android.content.Context;
+import android.util.Log;
 
 import com.lianyao.ftf.sdk.config.CallError;
 import com.lianyao.ftf.sdk.config.CallState;
@@ -131,7 +132,7 @@ public final class MainManager implements SignalingCallBack, WebrtcEvents {
 		}
 		this.callParameter = callParameter;
 		// STEP 主叫方 步骤1 创建RTCPeerConnection
-		if (signalingLayer.makeCall(callParameter.getUserName(),
+		/*if (signalingLayer.makeCall(callParameter.getUserName(),
 				callParameter.isAudio(), callParameter.isVideo())) {
 //			webrtcClient = new WebrtcClient(new WebrtcParameters(context,
 //					CallHelper.videoCodec, CallHelper.audioCodec));
@@ -145,7 +146,29 @@ public final class MainManager implements SignalingCallBack, WebrtcEvents {
 		}else {
 			callStateListener.onCallStateChanged(CallState.DISCONNNECTED, CallError.ERROR_BUSY);
 			hangup(callParameter.getUserName());
+		}*/
+
+		boolean flag = true;
+		for (int i = 0; i < 5; i++) {
+			flag = signalingLayer.makeCall(callParameter.getUserName(),
+					callParameter.isAudio(), callParameter.isVideo());
+			if(flag) {
+				break;
+			}else{
+				try {
+					Thread.sleep(300);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				Log.e("yueguang","失败次数"+i);
+			}
 		}
+		if(!flag){
+			callStateListener.onCallStateChanged(CallState.DISCONNNECTED, CallError.ERROR_BUSY);
+			hangup(callParameter.getUserName());
+			MtcLog.w("make call ", "loop five make call failed:");
+		}
+
 	}
 
 	/**
@@ -186,6 +209,7 @@ public final class MainManager implements SignalingCallBack, WebrtcEvents {
 		webrtcClient.addRemote(callParameter.getUserName(),
 				callParameter.getRemoteRender(), callParameter.isAudio(),
 				callParameter.isVideo());
+//		webrtcClient.setVideoHwAccelerationOptions(this.callParameter.getRenderEGLContext(), null);
 		signalingLayer.onAnswer(tid, callParameter.isAudio(),
 				callParameter.isVideo());
 		if (callStateListener != null) {
@@ -362,6 +386,7 @@ public final class MainManager implements SignalingCallBack, WebrtcEvents {
 			webrtcClient.addRemote(callParameter.getUserName(),
 					callParameter.getRemoteRender(), callParameter.isAudio(),
 					callParameter.isVideo());
+//			webrtcClient.setVideoHwAccelerationOptions(this.callParameter.getRenderEGLContext(), this.callParameter.getRenderEGLContext());
 			callStateListener.onCallStateChanged(CallState.CONNECTED, null);
 
 			if (webrtcClient != null && callStatsObserver != null) {

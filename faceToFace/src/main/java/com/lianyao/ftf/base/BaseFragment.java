@@ -77,6 +77,4 @@ public abstract class BaseFragment extends Fragment implements RestInterface {
 	public void onFailure(HttpException error, String msg) {
 		Logger.e(error.toString() + ":" + msg);
 	}
-
-
 }

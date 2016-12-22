@@ -2,6 +2,7 @@ package com.lianyao.ftf.view;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.view.View;
@@ -158,4 +159,12 @@ public class ContactActivity extends BaseActivity implements OnClickListener {
 		this.registerReceiver(myReceiver, filter);
 	}
 
+	@Override
+	public void onBackPressed() {
+		moveTaskToBack(true);
+//		Intent intent = new Intent(Intent.ACTION_MAIN);
+//		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//		intent.addCategory(Intent.CATEGORY_HOME);
+//		startActivity(intent);
+	}
 }

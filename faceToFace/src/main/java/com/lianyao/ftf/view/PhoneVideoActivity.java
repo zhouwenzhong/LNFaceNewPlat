@@ -18,8 +18,10 @@ import com.lianyao.ftf.base.BaseActivity;
 import com.lianyao.ftf.sdk.RtcClient;
 import com.lianyao.ftf.sdk.config.CallError;
 import com.lianyao.ftf.sdk.config.CallState;
+import com.lianyao.ftf.sdk.config.CallStats;
 import com.lianyao.ftf.sdk.config.RtcBroadcast;
 import com.lianyao.ftf.sdk.inter.CallStateListener;
+import com.lianyao.ftf.sdk.inter.CallStatsObserver;
 import com.lianyao.ftf.sdk.inter.RtcConnectionListener;
 import com.lianyao.ftf.sdk.layered.RtcCallManager;
 import com.lianyao.ftf.sdk.uitl.MtcLog;
@@ -27,6 +29,7 @@ import com.lianyao.ftf.sdk.view.PercentFrameLayout;
 import com.lianyao.ftf.util.AppUtil;
 import com.lianyao.ftf.util.CommonUtil;
 import com.lianyao.ftf.util.Logger;
+import com.lianyao.ftf.util.SPUtil;
 import com.lianyao.ftf.util.ToastUtil;
 
 import org.webrtc.SurfaceViewRenderer;
@@ -75,6 +78,20 @@ public class PhoneVideoActivity extends BaseActivity implements
 	private long time = 0;
 	private String callNumber;
 	private LinearLayout ll_answer;
+	private LinearLayout ll_stats;
+	private TextView tv_fpssent;
+	private TextView tv_fpsrecv;
+	private TextView tv_bandwidthsent;
+	private TextView tv_bandwidthrecv;
+	private TextView tv_sendframewidth;
+	private TextView tv_sendframeheight;
+	private TextView tv_recvframewidth;
+	private TextView tv_recvframeheight;
+	private TextView tv_packetslostsent;
+	private TextView tv_packetslostrecv;
+	private TextView tv_packetssent;
+	private TextView tv_packetsrecv;
+
 	/**
 	 * 更新通话时间
 	 */
@@ -165,6 +182,59 @@ public class PhoneVideoActivity extends BaseActivity implements
 			img_mianti.setBackgroundResource(R.drawable.wai_3);
 		}else {
 			img_mianti.setBackgroundResource(R.drawable.jingyin_3);
+		}
+
+		ll_stats = (LinearLayout) findViewById(R.id.ll_stats);
+		tv_phonetime = (TextView) findViewById(R.id.tv_phonetime);
+		tv_fpsrecv = (TextView) findViewById(R.id.tv_fpsrecv);
+		tv_fpssent = (TextView) findViewById(R.id.tv_fpssent);
+		tv_bandwidthsent = (TextView) findViewById(R.id.tv_bandwidthsent);
+		tv_bandwidthrecv = (TextView) findViewById(R.id.tv_bandwidthrecv);
+		tv_sendframewidth = (TextView) findViewById(R.id.tv_sendframewidth);
+		tv_sendframeheight = (TextView) findViewById(R.id.tv_sendframeheight);
+		tv_recvframewidth = (TextView) findViewById(R.id.tv_recvframewidth);
+		tv_recvframeheight = (TextView) findViewById(R.id.tv_recvframeheight);
+		tv_packetslostsent = (TextView) findViewById(R.id.tv_packetslostsent);
+		tv_packetslostrecv = (TextView) findViewById(R.id.tv_packetslostrecv);
+		tv_packetssent = (TextView) findViewById(R.id.tv_packetssent);
+		tv_packetsrecv = (TextView) findViewById(R.id.tv_packetsrecv);
+		boolean showStats = SPUtil.get(this, "callstats", "否").toString()
+				.equals("是") ? true : false;
+		if (showStats) {
+			rtcCallManager.addCallStatsObserver(new CallStatsObserver() {
+
+				@Override
+				public void onCallStats(final CallStats callStats) {
+					runOnUiThread(new Runnable() {
+
+						@Override
+						public void run() {
+							tv_fpssent.setText("发送帧率：" + callStats.getFpsSent());
+							tv_fpsrecv.setText("接收帧率：" + callStats.getFpsRecv());
+							tv_bandwidthsent.setText("发送带宽："
+									+ callStats.getBandwidthSent());
+							tv_bandwidthrecv.setText("接收带宽："
+									+ callStats.getBandwidthRecv());
+							tv_sendframewidth.setText("发送宽："
+									+ callStats.getSendFrameWidth());
+							tv_recvframewidth.setText("接收宽："
+									+ callStats.getRecvFrameWidth());
+							tv_sendframeheight.setText("发送高："
+									+ callStats.getSendFrameHeight());
+							tv_recvframeheight.setText("接收高："
+									+ callStats.getRecvFrameHeight());
+							tv_packetslostsent.setText("发送所丢的包的数量："
+									+ callStats.getPacketsLostSent());
+							tv_packetslostrecv.setText("接收所丢的包的数量："
+									+ callStats.getPacketsLostRecv());
+							tv_packetssent.setText("发送总包数量："
+									+ callStats.getPacketsSent());
+							tv_packetsrecv.setText("接收总包数量："
+									+ callStats.getPacketsRecv());
+						}
+					});
+				}
+			});
 		}
 	}
 

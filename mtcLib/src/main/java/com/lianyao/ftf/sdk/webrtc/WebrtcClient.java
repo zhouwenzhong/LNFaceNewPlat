@@ -2,20 +2,14 @@ package com.lianyao.ftf.sdk.webrtc;
 
 import android.text.TextUtils;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.lianyao.ftf.sdk.config.Constants;
+import com.lianyao.ftf.sdk.uitl.MtcLog;
 
 import org.webrtc.AudioSource;
 import org.webrtc.AudioTrack;
 import org.webrtc.CameraEnumerationAndroid;
 import org.webrtc.DataChannel;
+import org.webrtc.EglBase;
 import org.webrtc.IceCandidate;
 import org.webrtc.MediaConstraints;
 import org.webrtc.MediaStream;
@@ -33,8 +27,15 @@ import org.webrtc.VideoRenderer;
 import org.webrtc.VideoSource;
 import org.webrtc.VideoTrack;
 
-import com.lianyao.ftf.sdk.config.Constants;
-import com.lianyao.ftf.sdk.uitl.MtcLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class WebrtcClient {
 
@@ -176,7 +177,7 @@ public class WebrtcClient {
 						 * 5. 获取摄像头实例
 						 */
 						videoCapturer = VideoCapturerAndroid.create(
-								cameraDeviceName, null, null);
+								cameraDeviceName, null);
 						/**
 						 * 6.VideoSource/VideoTrack 视频管理
 						 * 
@@ -191,18 +192,18 @@ public class WebrtcClient {
 						MediaConstraints videoConstraints = new MediaConstraints();
 						
 						// 设置分辨率
-//						videoConstraints.mandatory.add(new KeyValuePair(
-//								MIN_VIDEO_WIDTH_CONSTRAINT, Integer
-//										.toString(1920)));
-//						videoConstraints.mandatory.add(new KeyValuePair(
-//								MAX_VIDEO_WIDTH_CONSTRAINT, Integer
-//										.toString(1920)));
-//						videoConstraints.mandatory.add(new KeyValuePair(
-//								MIN_VIDEO_HEIGHT_CONSTRAINT, Integer
-//										.toString(1080)));
-//						videoConstraints.mandatory.add(new KeyValuePair(
-//								MAX_VIDEO_HEIGHT_CONSTRAINT, Integer
-//										.toString(1920)));
+						videoConstraints.mandatory.add(new MediaConstraints.KeyValuePair(
+								MIN_VIDEO_WIDTH_CONSTRAINT, Integer
+										.toString(1280)));
+						videoConstraints.mandatory.add(new MediaConstraints.KeyValuePair(
+								MAX_VIDEO_WIDTH_CONSTRAINT, Integer
+										.toString(1280)));
+						videoConstraints.mandatory.add(new MediaConstraints.KeyValuePair(
+								MIN_VIDEO_HEIGHT_CONSTRAINT, Integer
+										.toString(720)));
+						videoConstraints.mandatory.add(new MediaConstraints.KeyValuePair(
+								MAX_VIDEO_HEIGHT_CONSTRAINT, Integer
+										.toString(720)));
 						
 						localVideoSource = peerConnectionFactory.createVideoSource(
 								videoCapturer, videoConstraints);
@@ -275,6 +276,10 @@ public class WebrtcClient {
 				webrtcRemoteMap.put(tid, webrtcRemote);
 			}
 		});
+	}
+
+	public void setVideoHwAccelerationOptions(EglBase.Context localContext, EglBase.Context remoteContext) {
+		peerConnectionFactory.setVideoHwAccelerationOptions(localContext, remoteContext);
 	}
 
 	/**
@@ -485,6 +490,11 @@ public class WebrtcClient {
 		@Override
 		public void onIceCandidate(final IceCandidate candidate) {
 			events.onIceCandidate(candidate, tid);
+		}
+
+		@Override
+		public void onIceCandidatesRemoved(IceCandidate[] iceCandidates) {
+
 		}
 
 		@Override

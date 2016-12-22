@@ -15,7 +15,7 @@ public class Constants {
 
     public static final String BASE_URL = "http://call.muxeyes.com:8080/ftf-inter/";
     public static final String CONTACT_DB = "lntelftf.db";
-//    public static final String BASE_URL = "http://192.168.1.105:8080/ftf-inter/";
+//    public static final String BASE_URL = "http://192.168.1.101:8080/ftf-inter/";
 
     public static final String APPID = "bWJozjBpVq";
     public static final String TICKET = "C66241A1D7802B3F8287691967FCF2A6";

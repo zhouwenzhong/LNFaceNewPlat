@@ -58,7 +58,7 @@ public class FtfService extends Service {
 				message.what = 1;
 				doActionHandler.sendMessage(message);
 			}
-		}, 200000, 200000);
+		}, 60000, 60000);
 	}
 
 	@SuppressLint("HandlerLeak")
